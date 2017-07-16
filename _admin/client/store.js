@@ -13,7 +13,7 @@ const store = createStore(
     INITIAL_STATE,
     applyMiddleware(
         thunk,
-        API('http://dombutik.localhost:8080/api/')
+        API('http://cms:8080/api/')
     )
 );
 

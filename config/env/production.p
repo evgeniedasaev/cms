@@ -11,7 +11,7 @@ $NAVIGATION_CACHE_TIME(60 * 60)
 $GLOBAL_CACHE_TIME(60 * 60 * 24)
 
 $HTTP_PROTOCOL[http://]
-$HTTP_HOST[beta.dombutik.ru]
+$HTTP_HOST[ddac.ru]
 
 # $self.oMemcached[^memcached::open[
 # 	$.server[127.0.0.1:11211]

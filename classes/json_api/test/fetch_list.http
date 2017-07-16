@@ -1,4 +1,4 @@
-POST http://dombutik.localhost/api/ HTTP/1.1
+POST http://cms/api/ HTTP/1.1
 content-type: application/vnd.api+json
 
 {

@@ -11,5 +11,5 @@ $CONFIG:logger_level[DEBUG]
 
 $NAVIGATION_CACHE_TIME(60 * 60)
 
-$DEFAULT_MAIL_FROM[info@dombutik.ru]
+$DEFAULT_MAIL_FROM[info@dac.ru]
 $DEFAULT_MAIL_TO[nikishinki@yandex.ru]
