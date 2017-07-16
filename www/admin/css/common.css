@@ -1,0 +1,11 @@
+html, body {
+	margin: 10px;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #222;
+}
+
+a { text-decoration: underline; padding: 1px; }
+a:link { color: #03c; }
+a:visited { color: #03c; }
+a:hover { color: #fff; background-color: #30c; text-decoration: none; }

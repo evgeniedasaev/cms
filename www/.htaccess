@@ -1,0 +1,20 @@
+DirectoryIndex _dispatcher.html
+
+ErrorDocument 403 /403.html
+ErrorDocument 404 /404.html
+
+RewriteEngine on
+ 
+RewriteCond	%{REQUEST_FILENAME}	!-f
+RewriteCond	%{REQUEST_FILENAME}	!-d
+RewriteCond	%{REQUEST_FILENAME} !^/(js|css|fonts|ico|off-line)/.*
+RewriteCond %{REQUEST_URI}      ^/_admin [NC]
+RewriteRule (.*)                /_dispatcher_admin.html?_request=/$1  [L,QSA]
+
+RewriteCond	%{REQUEST_FILENAME}	!-f
+RewriteCond	%{REQUEST_FILENAME}	!-d
+RewriteCond	%{REQUEST_FILENAME} !^/(js|css|fonts|ico|off-line)/.*
+RewriteRule (.*)                /_dispatcher.html?_request=/$1  [L,QSA]
+
+AddHandler parsed-html html
+Action parsed-html /cgi-bin/parser3.cgi

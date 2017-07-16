@@ -1,0 +1,4 @@
+#!/bin/sh
+: ${MYSQLDUMP:=/usr/local/bin/mysqldump}
+
+${MYSQLDUMP} $* > "$CGI_FILENAME"

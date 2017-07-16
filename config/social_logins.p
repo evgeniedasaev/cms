@@ -1,0 +1,42 @@
+^rem{*** Нужно указать токены для социальных сетей ***}
+$SOCIAL_LOGINS_DATA[
+	$.twitter[
+		$.api_key[bsIaalRSmgPFNNTDFb7rrn0jW]
+		$.api_secret[CS2VJFlrQ5myCLqYrHxtt141OQkXvhsroLgrKPEJv4l0K3IBK5]
+	]
+	$.facebook[
+		$.app_id[505302339660387]
+		$.app_secret[79bac23c640a2bd166e8093aa15ab7fa]
+	]
+	$.vkontakte[
+		$.app_id[5561529]
+		$.app_secret[YV6nHySMJdqxqORJLUSb]
+	]
+	$.yandex[
+		$.app_id[3240b7731d584ba2a8946d4fb8b946d1]
+		$.app_secret[e99f25eefc874adfa4d80a286fc04305]
+	]
+	$.odnoklassniki[
+		$.app_id[]
+		$.app_key[]
+		$.app_secret[]
+	]
+]
+
+$SOCIAL_ACCOUNTS[
+	$.twitter[
+		$.url[https://twitter.com/dombutik]
+	]
+	$.facebook[
+		$.url[https://www.facebook.com/dombutik.ru/]
+	]
+	$.vkontakte[
+		$.url[http://vk.com/clubdombutik]
+	]
+	$.odnoklassniki[
+		$.url[https://ok.ru/dombutik]
+	]
+	$.instagram[
+    		$.url[https://www.instagram.com/dombutik.ru/]
+    ]
+]

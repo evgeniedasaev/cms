@@ -1,0 +1,49 @@
+POST http://dombutik.localhost/api/ HTTP/1.1
+content-type: application/vnd.api+json
+
+{
+    "operations": [{
+        "uid": "a960d7ad-06c8-4fb9-96c9-21f4b1badf80",
+        "endpoint": "order",
+        "method": "update_item",
+        "params": {
+            "data": {
+                "id": "108126",
+                "type": "order",
+                "attributes": {
+                    "user_id": "10523",
+                    "dt_delivery": "2017-05-05T09:21:39.554Z",
+                    "dt_delivery_time_string": "C 10 до 12 дня",
+                    "payment_status_id": "0",
+                    "user_name": "Дасаев Евгений",
+                    "phone": "89163131717",
+                    "email": "djekoff@gmail.com",
+                    "is_confirm": "1"
+                },
+                "relationships": {
+                    "cart": {
+                        "data": [
+                            { "type": "goods", "id": "2" },
+                            { "type": "goods", "id": "210" }
+                        ]
+                    },
+                    "delivery": {
+                        "data": { "type": "delivery_type", "id": "10007" }
+                    },
+                    "payment": {
+                        "data": { "type": "payment_type", "id": "10004" }
+                    },
+                    "status": {
+                        "data": { "type": "order_status", "id": "10002" }
+                    },
+                    "auser": {
+                        "data": { "type": "user", "id": "1" }
+                    },
+                    "user": {
+                        "data": { "type": "user", "id": "10523" }
+                    }
+                }
+            }
+        }
+    }]
+}

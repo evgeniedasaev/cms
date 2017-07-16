@@ -1,0 +1,17 @@
+POST http://dombutik.localhost/api/ HTTP/1.1
+content-type: application/vnd.api+json
+
+{
+    "operations": [{
+        "uid": "74f7b420-3195-11e7-93ae-92361f002671",
+        "endpoint": "order",
+        "method": "fetch_item",
+        "params": {
+            "id": "108126",
+            "field": {
+                "order": ["id", "code", "total"]
+            },            
+            "include": ["cart", "user"]
+        }
+    }]
+}

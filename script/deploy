@@ -1,0 +1,27 @@
+#!/bin/sh -e
+
+git fetch
+
+if [ "$1" != "" ]
+then
+    git checkout -q "$1"
+fi
+
+# Вытягиваем последнюю версию кода
+git pull -q
+git submodule update -q --init --recursive
+
+git rev-parse HEAD > ../config/version.cfg
+
+# Перезапускаем скрипты очереди
+#pkill -f 'cron/execute_callback_queue.php' || true
+
+# Бэкапим базу перед миграцией
+../script/db backup
+#../script/db clone production test
+
+# Мигация базы
+../script/migrate up
+
+# Чистка 
+../script/cleanup

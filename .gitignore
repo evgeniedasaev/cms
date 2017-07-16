@@ -1,0 +1,6 @@
+
+tmp/
+
+config/version\.cfg
+
+config/database\.yml

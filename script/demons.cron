@@ -1,0 +1,2 @@
+../script/cron /_task/mailing_queue/
+../script/cron /_task/mailing_campaign_queue/

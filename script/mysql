@@ -1,0 +1,4 @@
+#!/bin/sh
+: ${MYSQL:=/usr/local/bin/mysql}
+
+${MYSQL} $* < "$CGI_FILENAME"

@@ -1,0 +1,22 @@
+$SEO_GENDERS[
+	$.femenine[
+		$.id(1)
+		$.code[femenine]
+		$.name[Женский]
+	]
+	$.masculine[
+		$.id(2)
+		$.code[masculine]
+		$.name[Мужской]
+	]
+	$.neuter[
+		$.id(3)
+		$.code[neuter]
+		$.name[Средний]
+	]
+	$.multiple[
+		$.id(4)
+		$.code[multiple]
+		$.name[Множенственный]
+	]
+]

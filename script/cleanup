@@ -1,0 +1,9 @@
+#!/bin/sh
+
+# Чистка сессий
+#../script/cron /cron/cleanup_session
+
+# Чистка кеша в публичке
+mv ../tmp/cache ../tmp/cache-to-remove; rm -r ../tmp/cache-to-remove
+
+# Чистка количества бэкапов или архивирование

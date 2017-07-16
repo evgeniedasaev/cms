@@ -1,0 +1,32 @@
+$SEO_CASES[
+	$.subjective[
+		$.id(1)
+		$.code[subjective]
+		$.name[Именительный]
+	]
+	$.genitive[
+		$.id(2)
+		$.code[genitive]
+		$.name[Родительный]
+	]
+	$.dative[
+		$.id(3)
+		$.code[dative]
+		$.name[Дательный]
+	]
+	$.accusative[
+		$.id(4)
+		$.code[accusative]
+		$.name[Винительный]
+	]
+	$.ablative[
+		$.id(5)
+		$.code[ablative]
+		$.name[Творительный]
+	]
+	$.prepositional[
+		$.id(6)
+		$.code[prepositional]
+		$.name[Предложный]
+	]
+]

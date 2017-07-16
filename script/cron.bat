@@ -1,0 +1,1 @@
+..\cgi\parser3.exe ..\script\cron.html %1 %2 %3 %4
