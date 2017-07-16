@@ -6,6 +6,8 @@ import { Router, browserHistory } from 'react-router';
 import store from './store';
 import router from './router';
 
+import './semantic/dist/semantic.min.css';
+
 const rootElement = document.getElementById('app');
 
 render(

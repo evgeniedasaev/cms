@@ -4,3 +4,11 @@ tmp/
 config/version\.cfg
 
 config/database\.yml
+
+_admin/client/semantic/src/
+
+_admin/client/semantic/tasks/
+
+_admin/client/semantic/gulpfile\.js
+
+_admin/client/semantic/

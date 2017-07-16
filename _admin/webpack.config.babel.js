@@ -39,6 +39,48 @@ let config = {
                 query: {
                     presets: ["react", "es2015", "stage-2"]
                 }
+            },
+            {
+                test: /\.css$/,
+                include: SRC_DIR,
+                loaders: ["style-loader", "css-loader"]
+            },
+            {
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
+                loader: "file-loader"
+            },
+            {
+                test: /\.(jpg|png|gif)$/,
+                loaders: [
+                    "file-loader",
+                    {
+                        loader: "image-webpack-loader",
+                        query: {
+                            progressive: true,
+                            optimizationLevel: 7,
+                            interlaced: false,
+                            pngquant: {
+                                quality: "65-90",
+                                speed: 4
+                            }
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.html$/,
+                loader: "html-loader"
+            },
+            {
+                test: /\.json$/,
+                loader: "json-loader"
+            },
+            {
+                test: /\.(mp4|webm)$/,
+                loader: "url-loader",
+                query: {
+                    limit: 10000
+                }
             }
         ]
     },
