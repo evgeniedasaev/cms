@@ -6,6 +6,8 @@ import { Router, browserHistory } from 'react-router';
 import store from './store';
 import routes from './routes';
 
+import './style';
+
 import {ThemeProvider} from 'styled-components';
 import theme from './theme';
 

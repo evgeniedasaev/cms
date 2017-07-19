@@ -1,6 +1,8 @@
-import styled from 'styled-components'
-import {media} from '../../styles/utils.jsx'
-import {Dimmer, Sidebar, Container} from 'semantic-ui-react'
+import styled from 'styled-components';
+import {media} from '../../styles/utils.jsx';
+import {Dimmer, Sidebar, Container} from 'semantic-ui-react';
+
+console.log(Dimmer, Sidebar, Container);
 
 export const PageLayout = styled.div`height: 100%;`
 
