@@ -1,4 +1,4 @@
-import { AUTH_METHODS, API_METHODS, callAction } from '../../../middleware/api';
+import { AUTH_METHODS, API_METHODS, callAction } from '../../../api';
 
 export const AUTH_LOGON = {
     request: "AUTH_LOGON_REQUEST",

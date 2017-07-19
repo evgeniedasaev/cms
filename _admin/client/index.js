@@ -4,15 +4,20 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 
 import store from './store';
-import router from './router';
+import routes from './routes';
 
-import './semantic/dist/semantic.min.css';
+import {ThemeProvider} from 'styled-components';
+import theme from './theme';
 
 const rootElement = document.getElementById('app');
 
 render(
     <Provider store={store}>
-        <Router history={browserHistory} routes={router} />
+        <Router history={browserHistory}>
+            <ThemeProvider theme={theme}>
+                {routes}
+            </ThemeProvider>
+        </Router>
     </Provider>,
     rootElement
 );

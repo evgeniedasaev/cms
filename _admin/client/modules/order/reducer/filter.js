@@ -2,14 +2,14 @@ import { ORDER_FILTER } from '../action';
 
 import { Map, OrderedMap, Set, is } from 'immutable';
 
-import * as operators from '../../../components/filterWidget/operators';
-import { operatorsFilters } from '../../../components/filterWidget/operatorsFilters';
+import * as operators from '../../App/components/filterWidget/operators';
+import { operatorsFilters } from '../../App/components/filterWidget/operatorsFilters';
 
-import StringWidget from '../../../components/filterWidget/StringWidget';
-import NumberWidget from '../../../components/filterWidget/NumberWidget';
-import DateWidget from '../../../components/filterWidget/DateWidget';
-import BooleanWidget from '../../../components/filterWidget/BooleanWidget';
-import SelectWidget from '../../../components/filterWidget/SelectWidget';
+import StringWidget from '../../App/components/filterWidget/StringWidget';
+import NumberWidget from '../../App/components/filterWidget/NumberWidget';
+import DateWidget from '../../App/components/filterWidget/DateWidget';
+import BooleanWidget from '../../App/components/filterWidget/BooleanWidget';
+import SelectWidget from '../../App/components/filterWidget/SelectWidget';
 
 const INITIAL_STATE = {
     filter: OrderedMap({

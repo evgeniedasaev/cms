@@ -5,9 +5,9 @@ import { Field, reduxForm, formValueSelector } from 'redux-form';
 
 import OrderCartForm from './CartForm';
 
-import TextField from '../../../components/formWidget/TextField';
-import SelectField from '../../../components/formWidget/SelectField';
-import BoxField from '../../../components/formWidget/BoxField';
+import TextField from '../../App/componentsformWidget/TextField';
+import SelectField from '../../App/componentsformWidget/SelectField';
+import BoxField from '../../App/componentsformWidget/BoxField';
 
 class OrderForm extends PureComponent {
 

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { StickyContainer, Sticky } from 'react-sticky-modified';
 
-import Header from '../../../components/Header';
+import Header from '../../App/componentsHeader';
 import GoodsList from '../../goods/components/List';
 import GoodsFilter from '../../goods/components/Filter';
 

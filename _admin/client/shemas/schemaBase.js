@@ -1,6 +1,6 @@
 import { Model } from 'redux-orm';
 
-import { MODEL_ACTIONS } from '../middleware/api';
+import { MODEL_ACTIONS } from '../api';
 
 export default class schemaBase extends Model {
     static reducer(action, modelClass) {

@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import * as operators from './operators';
-import { debounce } from '../../utils/debounce';
+import { debounce } from './debounce';
 
 const ON_CHANGE_DELAY = 200;
 

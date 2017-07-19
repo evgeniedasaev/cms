@@ -1,7 +1,7 @@
 import React, { PureComponent, PropTypes } from 'react';
 
 import { Field } from 'redux-form';
-import SelectField from '../../../components/formWidget/SelectField';
+import SelectField from '../../App/componentsformWidget/SelectField';
 
 export default class OrderCartForm extends PureComponent {
 

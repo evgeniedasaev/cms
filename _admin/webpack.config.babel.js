@@ -28,7 +28,7 @@ let config = {
     },
     devtool: (isDev) ? "source-map" : null, 
     resolve: {
-        extensions: [".js", ".jsx"]
+        extensions: [".js", ".jsx", ".css"]
     },
     module: {
         loaders: [
@@ -41,7 +41,6 @@ let config = {
             },
             {
                 test: /\.css$/,
-                include: SRC_DIR,
                 loaders: ["style-loader", "css-loader"]
             },
             {

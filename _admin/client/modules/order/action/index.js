@@ -1,4 +1,4 @@
-import { API_METHODS, callAction } from '../../../middleware/api';
+import { API_METHODS, callAction } from '../../../api';
 
 export const ORDER_COLLECTIONS = {
     request: "FETCH_ORDER_COLLECTIONS_REQUEST",

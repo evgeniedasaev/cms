@@ -1,7 +1,7 @@
 import React, {Component, createElement} from 'react';
 import Select from 'react-select';
 
-import { debounce } from '../../utils/debounce';
+import { debounce } from './debounce';
 
 const SEARCH_DELAY = 200;
 

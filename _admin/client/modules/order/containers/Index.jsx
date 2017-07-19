@@ -4,12 +4,12 @@ import { bindActionCreators } from 'redux';
 import { StickyContainer, Sticky } from 'react-sticky-modified';
 import { ModalManager } from 'react-dynamic-modal';
 
-import Header from '../../../components/Header';
+import Header from '../../App/componentsHeader';
 import OrderList from '../components/List';
 import OrderFilter from '../components/Filter';
 
-import MassAction from '../../../components/MassAction';
-import Modal from '../../../components/Modal';
+import MassAction from '../../App/componentsMassAction';
+import Modal from '../../App/componentsModal';
 
 import * as actions from '../action';
 

@@ -54,13 +54,9 @@ class Login extends PureComponent {
 
     render() {        
         return (
-            <div className="row-fluid">
-                <div className="span12">
-                    <LoginForm
-                        onChange={this.updateFormState}
-                        onSubmit={this.authentificate} />
-                </div>
-            </div>
+            <LoginForm
+                onChange={this.updateFormState}
+                onSubmit={this.authentificate} />
         );
     }
 }

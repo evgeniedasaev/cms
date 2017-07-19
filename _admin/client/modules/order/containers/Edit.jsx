@@ -7,7 +7,7 @@ import dateFormat from 'dateformat';
 
 import * as actions from '../action';
 
-import Header from '../../../components/Header';
+import Header from '../../App/componentsHeader';
 import OrderSidebar from '../components/Sidebar';
 import OrderForm from '../components/Form';
 

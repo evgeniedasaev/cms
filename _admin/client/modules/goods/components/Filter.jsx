@@ -1,6 +1,6 @@
 import React, { PureComponent, PropTypes } from 'react';
 
-import FilterItem from '../../../components/filterWidget/FilterItem';
+import FilterItem from '../../App/components/filterWidget/FilterItem';
 
 export default class GoodsFilter extends PureComponent {
 
