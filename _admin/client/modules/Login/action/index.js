@@ -44,10 +44,10 @@ export function logout(tokean) {
     }
 }
 
-export const APP_INFO = {
-    request: "APP_INFO_REQUEST",
-    success: "APP_INFO_SUCCESS",
-    failure: "APP_INFO_FAILED"
+export const APP = {
+    request: "APP_REQUEST",
+    success: "APP_SUCCESS",
+    failure: "APP_FAILED"
 };
 
 export function fetchAppInfo(userId) {
@@ -61,7 +61,7 @@ export function fetchAppInfo(userId) {
                 }
             ],
             '',
-            APP_INFO
+            APP
         ));
     }
 }

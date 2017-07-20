@@ -1,4 +1,4 @@
-import { AUTH_LOGON, AUTH_LOGOUT, APP_INFO } from '../action';
+import { AUTH_LOGON, AUTH_LOGOUT, APP } from '../action';
 
 const INITIAL_STATE = {
     appInfoLoaded: false,
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     logo: null,
     navigation: [],
 
-    loggedIn: typeof sessionStorage.authTokean !== 'undefined',
+    isLoggedIn: typeof sessionStorage.authTokean !== 'undefined',
 
     userId: (typeof sessionStorage.userId !== 'undefined') ? sessionStorage.userId : null,
     userTitle: (typeof sessionStorage.userTitle !== 'undefined') ? sessionStorage.userTitle : null,
@@ -36,13 +36,13 @@ export default (state = INITIAL_STATE, action) => {
         case AUTH_LOGOUT.failure:
             return deAuthentificateFailure(state, action);
 
-        case APP_INFO.request:
+        case APP.request:
             return fetchUserInfo(state, action);
 
-        case APP_INFO.success:
+        case APP.success:
             return fetchUserInfoSuccess(state, action);
 
-        case APP_INFO.failure:
+        case APP.failure:
             return fetchUserInfoFailure(state, action);
 
         default:
@@ -65,7 +65,7 @@ function authentificateSuccess(state, action) {
         sessionStorage.setItem('userCompany', userCompany);
         sessionStorage.setItem('userPosition', userPosition);
 
-        return { ...state, loggedIn: true, userId: id, userTitle, userCompany, userPosition };
+        return { ...state, isLoggedIn: true, userId: id, userTitle, userCompany, userPosition };
     }
 
     return state;
@@ -90,7 +90,7 @@ function deAuthentificateSuccess(state, action) {
     sessionStorage.removeItem('userCompany');
     sessionStorage.removeItem('userPosition');
 
-    return { ...state, loggedIn: false, userId: null, userTitle: null, userCompany: null, userPosition: null };
+    return { ...state, isLoggedIn: false, userId: null, userTitle: null, userCompany: null, userPosition: null };
 }
 
 function deAuthentificateFailure(state, action) {

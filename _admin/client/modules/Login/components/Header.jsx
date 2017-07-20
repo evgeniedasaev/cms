@@ -16,7 +16,7 @@ export default class Header extends PureComponent {
                             <img src={this.props.logo} />
                         </a>
                         <a className="brand" href="#">{this.props.title}</a>
-                        {   this.props.loggedIn &&
+                        {   this.props.isLoggedIn &&
                             <UserPanel
                                 id={this.props.userId}
                                 title={this.props.userTitle}

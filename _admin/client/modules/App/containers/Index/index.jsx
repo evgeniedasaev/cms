@@ -1,4 +1,5 @@
 import React, { PureComponent, PropTypes } from 'react';
+import {connect} from 'react-redux';
 
 import Header from '../../components/Header/index.jsx';
 import Sidebar from '../../components/Sidebar/index.jsx';
@@ -13,13 +14,23 @@ import {
   StyledDimmer
 } from './style.jsx';
 
+import {initApp, closeSidebar, openSidebar, windowResize} from '../../action';
+
 /**
  * Основное приложение
  * 
  * @class AppIndex
  * @extends {PureComponent}
  */
-export default class AppIndex extends PureComponent {
+class AppIndex extends PureComponent {
+    
+    componentWillMount () {
+        const {initApp, handleWindowResize, isLoggedIn} = this.props;
+    
+        initApp();
+        
+        window.addEventListener('resize', handleWindowResize);
+    }
     
     /**
      * render
@@ -28,22 +39,31 @@ export default class AppIndex extends PureComponent {
      * @memberof AppIndex
      */
     render() {
-        const   isLoggedIn = true,
-                isMobile = false,
-                sidebarOpened = true,
-                sidebarProps = {
-                    open: true,
+        const {
+            children,
+            sidebarOpened,
+            closeSidebar,
+            isLoggedIn,
+            toggleSidebar,
+            isMobile
+        } = this.props;
+        
+        const   sidebarProps = {
+                    open: sidebarOpened,
                     logout: () => console.log('logout'),
                     routing: [],
                     isMobile
                 },
                 headerProps = {
                     title: "DAC CMS 3.0",
-                    toggleSidebar: () => console.log('open sidebar'),
+                    toggleSidebar,
                     isMobile,
                     isLoggedIn
                 },
-                dimmerProps = {},
+                dimmerProps = {
+                    active: true,
+                    onClick: closeSidebar
+                },
                 SidebarSemanticPusherStyledPatch =
                     !isMobile && isLoggedIn
                         ? SidebarSemanticPusherStyled.extend`
@@ -60,15 +80,47 @@ export default class AppIndex extends PureComponent {
                         <MainLayout>
                             <MainContent>
                                 <MainContainer id="main-container">
-                                    {this.props.children}
+                                    {children}
                                 </MainContainer>
                             </MainContent>
                             <Footer /> 
                         </MainLayout>
                     </SidebarSemanticPusherStyledPatch>
-                    {/* {isLoggedIn && sidebarOpened && <StyledDimmer {...dimmerProps} />} */}
+                    {isLoggedIn && sidebarOpened && <StyledDimmer {...dimmerProps} />} 
                 </SidebarSemanticPushableStyled>
             </PageLayout>
         );
     };
 }
+
+function mapStateToProps (state) {
+  const {sidebarOpened, isMobile, isMobileXS, isMobileSM, isLoggedIn} = state.app
+  return {
+    sidebarOpened,
+    isMobile,
+    isMobileXS,
+    isMobileSM,
+    isLoggedIn: true
+  }
+}
+
+function mapDispatchToProps (dispatch) {
+  let resizer
+  return {
+    initApp: () => {
+        dispatch(initApp())
+    },
+    closeSidebar: () => {
+        dispatch(closeSidebar())
+    },
+    toggleSidebar: () => {
+        dispatch(openSidebar())
+    },
+    handleWindowResize: () => {
+        clearTimeout(resizer)
+        resizer = setTimeout(() => dispatch(windowResize()), 150)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AppIndex);

@@ -15,17 +15,17 @@ import Login from './modules/Login/containers/Login';
 import orderRoutes from './modules/Order/router';
 
 function checkAuth(nextState, replaceState) {
-    const { application: { loggedIn } } = store.getState();
+    const { application: { isLoggedIn } } = store.getState();
 
     if (nextState.location.pathname != '/_admin/login') {
-        if (!loggedIn) {
+        if (!isLoggedIn) {
             replaceState({
                 pathname: '/_admin/login',
                 state: { nextPathname: nextState.location.pathname }
             });
         }
     } else {
-        if (loggedIn) {
+        if (isLoggedIn) {
             replaceState({
                 pathname: '/_admin/order/'
             });

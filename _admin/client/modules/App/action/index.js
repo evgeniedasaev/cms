@@ -1,5 +1,11 @@
 import { AUTH_METHODS, API_METHODS, callAction } from '../../../api';
-import { APP_INFO } from './constants';
+import { APP, UI } from './constants';
+
+export function initApp() {
+    return {
+        type: APP.init
+    }
+}
 
 export function fetchAppInfo(userId) {
     return dispatch => {
@@ -12,7 +18,25 @@ export function fetchAppInfo(userId) {
                 }
             ],
             '',
-            APP_INFO
+            APP
         ));
+    }
+}
+
+export function closeSidebar() {
+    return {
+        type: UI.closeSidebar
+    }
+}
+
+export function openSidebar() {
+    return {
+        type: UI.openSidebar
+    }
+}
+
+export function windowResize() {
+    return {
+        type: UI.windowResize
     }
 }

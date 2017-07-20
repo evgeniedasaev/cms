@@ -1,5 +1,12 @@
-export const APP_INFO = {
-    request: "APP_INFO_REQUEST",
-    success: "APP_INFO_SUCCESS",
-    failure: "APP_INFO_FAILED"
+export const APP = {
+    init: "APP_INIT",
+    request: "APP_REQUEST",
+    success: "APP_SUCCESS",
+    failure: "APP_FAILED"
+};
+
+export const UI = {
+    openSidebar: "UI_OPEN_SIDEBAR",
+    closeSidebar: "UI_CLOSE_SIDEBAR",
+    windowResize: "UI_WINDOW_RESIZE"
 };

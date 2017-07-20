@@ -15,17 +15,17 @@ class App extends PureComponent {
     }
 
     componentDidMount() {
-        const { loggedIn, userId, appInfoLoaded } = this.props;
+        const { isLoggedIn, userId, appInfoLoaded } = this.props;
 
-        if (loggedIn && typeof userId !== 'undefined' && !appInfoLoaded) {
+        if (isLoggedIn && typeof userId !== 'undefined' && !appInfoLoaded) {
             this.props.actions.fetchAppInfo(userId);
         }
     }
     
     componentWillReceiveProps(nextProps) {
-        const { loggedIn } = nextProps;
+        const { isLoggedIn } = nextProps;
 
-        if (!loggedIn) {
+        if (!isLoggedIn) {
             browserHistory.push('/_admin/login');
         }
     }    

@@ -26,9 +26,9 @@ class Login extends PureComponent {
     }
 
     componentWillReceiveProps(nextProps) {
-        const { loggedIn, nextPathname } = nextProps;
-        console.log(loggedIn, nextPathname);
-        if (loggedIn) {
+        const { isLoggedIn, nextPathname } = nextProps;
+        console.log(isLoggedIn, nextPathname);
+        if (isLoggedIn) {
             if (typeof nextPathname !== 'undefined') {
                 browserHistory.push(nextPathname);
             } else {
@@ -63,7 +63,7 @@ class Login extends PureComponent {
 
 export default connect((state, props) => {
     return {
-        loggedIn: state.application.loggedIn,
+        isLoggedIn: state.application.isLoggedIn,
         nextPathname: (typeof props.location.state !== 'undefined') ? props.location.state.nextPathname : undefined
     }
 }, (dispatch) => {
