@@ -15,11 +15,9 @@ const rootElement = document.getElementById('app');
 
 render(
     <Provider store={store}>
-        <Router history={browserHistory}>
-            <ThemeProvider theme={theme}>
-                {routes}
-            </ThemeProvider>
-        </Router>
+        <ThemeProvider theme={theme}>
+            <Router history={browserHistory} routes={routes} />
+        </ThemeProvider>
     </Provider>,
     rootElement
 );
