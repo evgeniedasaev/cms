@@ -99,7 +99,7 @@ function mapStateToProps (state) {
     isMobile,
     isMobileXS,
     isMobileSM,
-    isLoggedIn: true
+    isLoggedIn
   }
 }
 
