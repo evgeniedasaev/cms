@@ -1,10 +1,8 @@
-import { AUTH_LOGON, AUTH_LOGOUT, APP } from '../action';
+import { AUTH_LOGON, AUTH_LOGOUT } from '../action/constants';
 
 const INITIAL_STATE = {
-    appInfoLoaded: false,
-    title: null,
-    logo: null,
-    navigation: [],
+    loading: false,
+    messages: [],
 
     isLoggedIn: typeof sessionStorage.authTokean !== 'undefined',
 
@@ -36,15 +34,6 @@ export default (state = INITIAL_STATE, action) => {
         case AUTH_LOGOUT.failure:
             return deAuthentificateFailure(state, action);
 
-        case APP.request:
-            return fetchUserInfo(state, action);
-
-        case APP.success:
-            return fetchUserInfoSuccess(state, action);
-
-        case APP.failure:
-            return fetchUserInfoFailure(state, action);
-
         default:
             return state;
     }
@@ -56,26 +45,31 @@ function authentificate(state, action) {
 
 function authentificateSuccess(state, action) {
     const { payload: { operations } } = action;
-    const { data: { id, attributes: { authTokean, userTitle, userCompany, userPosition } } } = Object.values(operations)[0];
 
-    if (typeof authTokean !== 'undefined') {
-        sessionStorage.setItem('authTokean', authTokean);
-        sessionStorage.setItem('userId', id);
-        sessionStorage.setItem('userTitle', userTitle);
-        sessionStorage.setItem('userCompany', userCompany);
-        sessionStorage.setItem('userPosition', userPosition);
+    Object.values(operations).map(operation => {
+        const {data, errors} = operation;
 
-        return { ...state, isLoggedIn: true, userId: id, userTitle, userCompany, userPosition };
-    }
+        if (data) {
+            const { id, attributes: { authTokean, userTitle, userCompany, userPosition } } = data;
+
+            if (typeof authTokean !== 'undefined') {
+                sessionStorage.setItem('authTokean', authTokean);
+                sessionStorage.setItem('userId', id);
+                sessionStorage.setItem('userTitle', userTitle);
+                sessionStorage.setItem('userCompany', userCompany);
+                sessionStorage.setItem('userPosition', userPosition);
+
+                return { ...state, isLoggedIn: true, userId: id, userTitle, userCompany, userPosition };
+            }
+        }
+    })
 
     return state;
 }
 
 function authentificateFailure(state, action) {
-    return state;
-}
+    const { payload: { operations } } = action;
 
-function authentificate(state, action) {
     return state;
 }
 
@@ -94,20 +88,5 @@ function deAuthentificateSuccess(state, action) {
 }
 
 function deAuthentificateFailure(state, action) {
-    return state;
-}
-
-function fetchUserInfo(state, action) {
-    return state;
-}
-
-function fetchUserInfoSuccess(state, action) {
-    const { payload: { operations } } = action;
-    const { data: { title, logo, navigation } } = Object.values(operations)[0];
-
-    return { ...state, appInfoLoaded: true, title, logo, navigation };
-}
-
-function fetchUserInfoFailure(state, action) {
     return state;
 }

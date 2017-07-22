@@ -8,5 +8,6 @@ export const APP = {
 export const UI = {
     openSidebar: "UI_OPEN_SIDEBAR",
     closeSidebar: "UI_CLOSE_SIDEBAR",
-    windowResize: "UI_WINDOW_RESIZE"
+    windowResize: "UI_WINDOW_RESIZE",
+    dismissMessage: "UI_DISMISS_MESSAGE"
 };

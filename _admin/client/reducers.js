@@ -1,17 +1,15 @@
 import { combineReducers } from 'redux';
 import { createReducer } from 'redux-orm';
 import { reducer as formReducer } from 'redux-form';
-import app from './modules/App/reducer';
 import { orm } from './shemas';
-import login from './modules/Login/reducer';
-import orders from './modules/Order/reducer';
+import app from './modules/App/reducer';
+import auth from './modules/Login/reducer';
 
 const rootReducer = combineReducers({
     app,
+    auth,
     orm: createReducer(orm),
-    form: formReducer,
-    /* login,
-    orders */
+    form: formReducer
 });
 
 export default rootReducer;

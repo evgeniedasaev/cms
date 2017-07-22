@@ -40,3 +40,10 @@ export function windowResize() {
         type: UI.windowResize
     }
 }
+
+export function dismissMessage(messageIndex) {
+    return {
+        type: UI.dismissMessage,
+        payload: messageIndex
+    }
+}

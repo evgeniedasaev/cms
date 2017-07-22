@@ -7,7 +7,7 @@ export default class schemaBase extends Model {
         const { payload, type } = action;
 
         switch (type) {
-            case MODEL_ACTIONS.CREATE_ACTION:
+            case MODEL_ACTIONS.create:
                 const modelName = modelClass.toString().split('(' || /s+/)[0].split(' ' || /s+/)[1];
 
                 if (modelName in payload) {

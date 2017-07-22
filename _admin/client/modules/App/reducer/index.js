@@ -1,7 +1,9 @@
 import { APP, UI } from '../action/constants';
+import { APP_ACTIONS } from '../../../api';
 
 const INITIAL_STATE = {
-    isLoggedIn: typeof sessionStorage.authTokean !== 'undefined',
+    loading: false,
+    messages: [],
     sidebarOpened: false,
 
     isMobile: false,
@@ -11,7 +13,7 @@ const INITIAL_STATE = {
     appInfoLoaded: false,
     title: null,
     logo: null,
-    navigation: []
+    rights: []
 };
 
 const computeMobileStatuses = () => {
@@ -29,6 +31,15 @@ export default (state = INITIAL_STATE, action) => {
         case APP.init:
             return initApp(state, action);
 
+        case APP.request:
+            return fetchAppInfo(state, action);
+
+        case APP.success:
+            return fetchAppInfoSuccess(state, action);
+
+        case APP.failure:
+            return fetchAppInfoFailure(state, action);
+
         case UI.windowResize:
             return windowResize(state, action);
 
@@ -38,14 +49,14 @@ export default (state = INITIAL_STATE, action) => {
         case UI.closeSidebar:
             return closeSidebar(state, action);
 
-        case APP.request:
-            return fetchAppInfo(state, action);
+        case UI.dismissMessage:
+            return dismissMessage(state, action);
 
-        case APP.success:
-            return fetchAppInfoSuccess(state, action);
+        case APP_ACTIONS.loading:
+            return showLoading(state, action);
 
-        case APP.failure:
-            return fetchAppInfoFailure(state, action);
+        case APP_ACTIONS.loaded:
+            return handleLoaded(state, action);
 
         default:
             return state;
@@ -99,10 +110,52 @@ function fetchAppInfoSuccess(state, action) {
         appInfoLoaded: true,
         title,
         logo,
-        navigation
+        rights: navigation
     };
 }
 
 function fetchAppInfoFailure(state, action) {
+    const { payload: { operations } } = action;
+
     return state;
+}
+
+function showLoading(state, action) {
+    return {
+        ...state,
+        loading: true
+    };
+}
+
+function handleLoaded(state, action) {
+    const { payload: { operations } } = action;
+
+    let messages = state.messages;
+    Object.values(operations).map(operation => {
+        const {data, errors} = operation;
+
+        if (errors) {
+            messages = [
+                ...messages,
+                ...errors
+            ];
+        }
+    });
+
+    return {
+        ...state,
+        messages,
+        loading: false
+    };
+}
+
+function dismissMessage(state, action) {
+    const { payload: messageIndex } = action;
+
+    state.messages.splice(messageIndex, 1);
+
+    return {
+        ...state,
+        messages: [...state.messages]
+    }
 }

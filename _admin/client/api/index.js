@@ -2,9 +2,14 @@ import normalize from 'json-api-normalizer';
 import * as uid from 'uid-safe';
 import humps from 'humps';
 
+export const APP_ACTIONS = {
+    loading: "START_LOAD",
+    loaded: "FINISH_LOAD"
+}
+
 export const MODEL_ACTIONS = {
-    CREATE_ACTION: "CREATE_MODELS",
-    DELETE_ACTION: "DELETE_MODELS"
+    create: "CREATE_MODELS",
+    delete: "DELETE_MODELS"
 }
 
 export const AUTH_METHODS = {
@@ -51,6 +56,16 @@ export default (enpoint_host) => {
             payload: requestObject
         });
 
+        store.dispatch({
+            type: scope + ((typeof endpointAction.request !== 'undefined') ? endpointAction.request : API_ACTIONS.request),
+            payload: requestObject
+        });
+
+        store.dispatch({
+            type: APP_ACTIONS.loading,
+            payload: requestObject
+        });
+
         return fetch(
             API_ENDPOINT_HOST,
             {
@@ -89,7 +104,12 @@ export default (enpoint_host) => {
                     });
 
                     store.dispatch({
-                        type: MODEL_ACTIONS.CREATE_ACTION,
+                        type: APP_ACTIONS.loaded,
+                        payload: data
+                    });
+
+                    store.dispatch({
+                        type: MODEL_ACTIONS.create,
                         payload: modelsData
                     });
                 }

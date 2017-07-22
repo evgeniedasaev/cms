@@ -10,7 +10,6 @@ export const appRouting = [
   ...LoginRouter,
   ...AppRouter,
 ];
-console.log(appRouting);
 
 export const history = createBrowserHistory({
     basename: '/_admin'
@@ -65,7 +64,7 @@ export const Routing = store => {
 
     return <Tag key={i} {...b} />
   })
-  console.log(routesRendered)
+
   return (
     <AppIndex>
         <Switch>
