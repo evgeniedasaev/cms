@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {media} from '../../styles/utils.jsx'
+import {media} from '../../styles/utils'
 import {Button} from 'semantic-ui-react'
 
 export const StyledHeader = styled.header`

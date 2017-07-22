@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {media} from '../../styles/utils.jsx'
+import {media} from '../../styles/utils'
 
 export const StyledFooter = styled.footer`
   width: 100%;

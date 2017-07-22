@@ -9,7 +9,7 @@ import {
   SidebarItem,
   SidebarLogoutItem
 } from './style'
-import {Spacer} from '../../styles/base.jsx'
+import {Spacer} from '../../styles/base'
 
 export default class SidebarComponent extends Component {
   static propTypes = {

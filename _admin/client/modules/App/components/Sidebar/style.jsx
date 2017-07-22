@@ -1,6 +1,6 @@
 import {Menu, Sidebar, Image as ImageComponent} from 'semantic-ui-react'
 import styled from 'styled-components'
-import {media} from '../../styles/utils.jsx'
+import {media} from '../../styles/utils'
 
 // ${'combine sidebar with dimmer, when sidebar is visible on mobile'}
 //   color: ${props => props.theme.primaryColorText}!important;

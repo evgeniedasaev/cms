@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {media} from '../../styles/utils.jsx';
+import {media} from '../../styles/utils';
 import {Dimmer, Sidebar, Container} from 'semantic-ui-react';
 
 export const PageLayout = styled.div`height: 100%;`
@@ -29,7 +29,7 @@ export const SidebarSemanticPusherStyled = styled(Sidebar.Pusher)`
 	height: 100%;
 	overflow: scroll!important;
 
-	${'' /* poptop_modules/components/views/AppComponent/index.jsx 65:52   ${media.md`
+	${'' /* poptop_modules/components/views/AppComponent/index 65:52   ${media.md`
 		max-width: ${props => props.sidebarOpened && `calc(100% - 150px)`};
 	`} */}
 

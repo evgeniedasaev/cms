@@ -1,10 +1,12 @@
 import React from 'react'
 import {Route, Redirect, Switch} from 'react-router-dom'
 import {createBrowserHistory} from 'history'
+import AppIndex from './modules/App/containers/Index';
+import LoginRouter from './modules/Login/router';
 
-import AppIndex from './modules/App/containers/Index/index.jsx';
-
-export const appRouting = [];
+export const appRouting = [
+  ...LoginRouter
+];
 
 export const history = createBrowserHistory({
     basename: '/_admin'

@@ -1,9 +1,8 @@
 import React, { PureComponent, PropTypes } from 'react';
 import {connect} from 'react-redux';
-
-import Header from '../../components/Header/index.jsx';
-import Sidebar from '../../components/Sidebar/index.jsx';
-import Footer from '../../components/Footer/index.jsx';
+import Header from '../../components/Header/index';
+import Sidebar from '../../components/Sidebar/index';
+import Footer from '../../components/Footer/index';
 import {
   PageLayout,
   MainLayout,
@@ -12,7 +11,7 @@ import {
   SidebarSemanticPushableStyled,
   MainContainer,
   StyledDimmer
-} from './style.jsx';
+} from './style';
 
 import {initApp, closeSidebar, openSidebar, windowResize} from '../../action';
 

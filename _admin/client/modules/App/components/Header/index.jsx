@@ -7,8 +7,8 @@ import {
   Navicon,
   PageTitle,
   HeaderButton
-} from './style.jsx';
-import {Spacer} from '../../styles/base.jsx';
+} from './style';
+import {Spacer} from '../../styles/base';
 
 export default class Header extends PureComponent {
 /*   shouldComponentUpdate (nextProps) {

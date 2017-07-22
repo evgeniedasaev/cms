@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 import { createReducer } from 'redux-orm';
 import { reducer as formReducer } from 'redux-form';
-
 import app from './modules/App/reducer';
 import { orm } from './shemas';
 import login from './modules/Login/reducer';
