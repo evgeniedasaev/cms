@@ -1,17 +1,15 @@
 import { AUTH_LOGON, AUTH_LOGOUT } from '../action/constants';
 import storage from '../../../storage';
 
-const INITIAL_STATE = {
-    loading: false,
-    messages: [],
-
+const getUserDataFromStorage = () => {return {
     isLoggedIn: typeof storage.authTokean !== 'undefined',
-
     userId: (typeof storage.userId !== 'undefined') ? storage.userId : null,
     userTitle: (typeof storage.userTitle !== 'undefined') ? storage.userTitle : null,
     userCompany: (typeof storage.userCompany !== 'undefined') ? storage.userCompany : null,
-    userPosition: (typeof storage.userPosition !== 'undefined') ? storage.userPosition : null,
-};
+    userPosition: (typeof storage.userPosition !== 'undefined') ? storage.userPosition : null
+}};
+
+const INITIAL_STATE = getUserDataFromStorage();
 
 export default (state = INITIAL_STATE, action) => {
     const { type } = action;
@@ -49,23 +47,21 @@ function authentificateSuccess(state, action) {
 
     Object.values(operations).map(operation => {
         const {data, errors} = operation;
-        console.log(data)
+
         if (data) {
             const { id, attributes: { authTokean, userTitle, userCompany, userPosition } } = data;
-            console.log(id, authTokean, userTitle, userCompany, userPosition);
+
             if (typeof authTokean !== 'undefined') {
                 storage.setItem('authTokean', authTokean);
                 storage.setItem('userId', id);
                 storage.setItem('userTitle', userTitle);
                 storage.setItem('userCompany', userCompany);
                 storage.setItem('userPosition', userPosition);
-
-                return { ...state, isLoggedIn: true, userId: id, userTitle, userCompany, userPosition };
             }
         }
     })
 
-    return state;
+    return getUserDataFromStorage();
 }
 
 function authentificateFailure(state, action) {
@@ -85,7 +81,7 @@ function deAuthentificateSuccess(state, action) {
     storage.removeItem('userCompany');
     storage.removeItem('userPosition');
 
-    return { ...state, isLoggedIn: false, userId: null, userTitle: null, userCompany: null, userPosition: null };
+    return getUserDataFromStorage();
 }
 
 function deAuthentificateFailure(state, action) {
