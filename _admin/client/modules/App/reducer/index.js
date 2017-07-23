@@ -1,4 +1,5 @@
 import { APP, UI } from '../action/constants';
+import { AUTH_LOGOUT } from '../../Login/action/constants';
 import { APP_ACTIONS } from '../../../api';
 
 const INITIAL_STATE = {
@@ -57,6 +58,12 @@ export default (state = INITIAL_STATE, action) => {
 
         case APP_ACTIONS.loaded:
             return handleLoaded(state, action);
+
+        case AUTH_LOGOUT.success:
+            return {
+                ...state,
+                sidebarOpened: false
+            };
 
         default:
             return state;
