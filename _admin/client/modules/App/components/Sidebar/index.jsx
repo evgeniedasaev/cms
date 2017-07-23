@@ -69,7 +69,7 @@ export default class SidebarComponent extends Component {
         <Spacer />
         <SidebarLogoutItem onClick={logout}>
           <Icon name="sign out" />
-					Logout
+					Выйти
         </SidebarLogoutItem>
       </StyledSidebar>
     )
