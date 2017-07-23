@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {Loader, Dimmer, Message} from 'semantic-ui-react';
 import Header from '../../components/Header/index';
 import Sidebar from '../../components/Sidebar/index';
-import Footer from '../../components/Footer/index';
 import {
   PageLayout,
   MainLayout,
@@ -100,7 +99,6 @@ class AppIndex extends PureComponent {
                                     </Dimmer>}
                                 </MainContainer>
                             </MainContent>
-                            <Footer /> 
                         </MainLayout>
                     </SidebarSemanticPusherStyledPatch>
                     {isLoggedIn && sidebarOpened && <StyledDimmer {...dimmerProps} />} 
