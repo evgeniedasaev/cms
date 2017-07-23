@@ -1,6 +1,7 @@
 import normalize from 'json-api-normalizer';
 import * as uid from 'uid-safe';
 import humps from 'humps';
+import storage from '../storage';
 
 export const APP_ACTIONS = {
     loading: "START_LOAD",
@@ -71,7 +72,7 @@ export default (enpoint_host) => {
             {
                 ...requestOptions,
                 body: JSON.stringify({
-                    tokean: (sessionStorage.authTokean) ? sessionStorage.authTokean : '',
+                    tokean: (storage.authTokean) ? storage.authTokean : '',
                     operations: requestObject
                 })
             }

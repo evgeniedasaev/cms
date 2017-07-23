@@ -1,12 +1,13 @@
 import React, { PureComponent, PropTypes } from 'react';
 import { Link } from 'react-router';
+import storage from '../../../storage.js';
 
 export default class UserPanel extends PureComponent {
 
     logout(event) {
         event.preventDefault();
 
-        this.props.logout(sessionStorage.authTokean);
+        this.props.logout(storage.authTokean);
     }
 
     render() {

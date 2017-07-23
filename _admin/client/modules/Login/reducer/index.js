@@ -1,15 +1,16 @@
 import { AUTH_LOGON, AUTH_LOGOUT } from '../action/constants';
+import storage from '../../../storage';
 
 const INITIAL_STATE = {
     loading: false,
     messages: [],
 
-    isLoggedIn: typeof sessionStorage.authTokean !== 'undefined',
+    isLoggedIn: typeof storage.authTokean !== 'undefined',
 
-    userId: (typeof sessionStorage.userId !== 'undefined') ? sessionStorage.userId : null,
-    userTitle: (typeof sessionStorage.userTitle !== 'undefined') ? sessionStorage.userTitle : null,
-    userCompany: (typeof sessionStorage.userCompany !== 'undefined') ? sessionStorage.userCompany : null,
-    userPosition: (typeof sessionStorage.userPosition !== 'undefined') ? sessionStorage.userPosition : null,
+    userId: (typeof storage.userId !== 'undefined') ? storage.userId : null,
+    userTitle: (typeof storage.userTitle !== 'undefined') ? storage.userTitle : null,
+    userCompany: (typeof storage.userCompany !== 'undefined') ? storage.userCompany : null,
+    userPosition: (typeof storage.userPosition !== 'undefined') ? storage.userPosition : null,
 };
 
 export default (state = INITIAL_STATE, action) => {
@@ -48,16 +49,16 @@ function authentificateSuccess(state, action) {
 
     Object.values(operations).map(operation => {
         const {data, errors} = operation;
-
+        console.log(data)
         if (data) {
             const { id, attributes: { authTokean, userTitle, userCompany, userPosition } } = data;
-
+            console.log(id, authTokean, userTitle, userCompany, userPosition);
             if (typeof authTokean !== 'undefined') {
-                sessionStorage.setItem('authTokean', authTokean);
-                sessionStorage.setItem('userId', id);
-                sessionStorage.setItem('userTitle', userTitle);
-                sessionStorage.setItem('userCompany', userCompany);
-                sessionStorage.setItem('userPosition', userPosition);
+                storage.setItem('authTokean', authTokean);
+                storage.setItem('userId', id);
+                storage.setItem('userTitle', userTitle);
+                storage.setItem('userCompany', userCompany);
+                storage.setItem('userPosition', userPosition);
 
                 return { ...state, isLoggedIn: true, userId: id, userTitle, userCompany, userPosition };
             }
@@ -78,11 +79,11 @@ function deAuthentificate(state, action) {
 }
 
 function deAuthentificateSuccess(state, action) {
-    sessionStorage.removeItem('authTokean');
-    sessionStorage.removeItem('userId');
-    sessionStorage.removeItem('userTitle');
-    sessionStorage.removeItem('userCompany');
-    sessionStorage.removeItem('userPosition');
+    storage.removeItem('authTokean');
+    storage.removeItem('userId');
+    storage.removeItem('userTitle');
+    storage.removeItem('userCompany');
+    storage.removeItem('userPosition');
 
     return { ...state, isLoggedIn: false, userId: null, userTitle: null, userCompany: null, userPosition: null };
 }
