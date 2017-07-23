@@ -23,7 +23,7 @@ export default class Header extends PureComponent {
   }
 
   render () {
-    const {title, toggleSidebar, isLoggedIn, isMobile} = this.props
+    const {title, toggleSidebar, isLoggedIn, userFullTitle, isMobile} = this.props
 
     return (
       <StyledHeader>
@@ -37,23 +37,22 @@ export default class Header extends PureComponent {
             {title}
           </PageTitle>
           <Spacer />
-          <Popup
+          {isLoggedIn && <Popup
             trigger={
               <HeaderButton
                 id="header-button"
                 icon
                 as={'a'}
                 aria-label="github-header-link-button"
-                href="https://github.com/Metnew/react-semantic.ui-starter"
                 basic
                 circular
               >
-                <Icon name="github" size="large" link fitted/>
+                <Icon name="user circle outline" size="large" link fitted/>
               </HeaderButton>
             }
-            content={'RSUIS on @Github'}
+            content={userFullTitle}
             inverted
-          />
+          />}
         </HeaderInner>
       </StyledHeader>
     )

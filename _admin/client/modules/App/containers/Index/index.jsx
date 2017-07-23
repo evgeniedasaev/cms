@@ -47,6 +47,7 @@ class AppIndex extends PureComponent {
             sidebarOpened,
             closeSidebar,
             isLoggedIn,
+            userFullTitle,
             toggleSidebar,
             isMobile,
             loading,
@@ -63,7 +64,8 @@ class AppIndex extends PureComponent {
                     title: "DAC CMS 3.0",
                     toggleSidebar,
                     isMobile,
-                    isLoggedIn
+                    isLoggedIn,
+                    userFullTitle
                 },
                 dimmerProps = {
                     active: true,
@@ -110,7 +112,15 @@ class AppIndex extends PureComponent {
 
 function mapStateToProps (state) {
   const {sidebarOpened, isMobile, isMobileXS, isMobileSM, loading, messages} = state.app;
-  const {isLoggedIn} = state.auth;
+  const {isLoggedIn, userTitle, userCompany, userPosition} = state.auth;
+  
+  let userFullTitle = userTitle;
+  if (userPosition) {
+      userFullTitle += "," + userPosition;
+  }
+  if (userCompany) {
+      userFullTitle += "@" + userCompany;
+  }
 
   return {
     sidebarOpened,
@@ -119,7 +129,8 @@ function mapStateToProps (state) {
     isMobileSM,
     isLoggedIn,
     loading,
-    messages
+    messages,
+    userFullTitle
   }
 }
 
