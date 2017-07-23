@@ -3,6 +3,7 @@ import storage from '../../../storage';
 
 const getUserDataFromStorage = () => {return {
     isLoggedIn: typeof storage.authTokean !== 'undefined',
+    authTokean: (typeof storage.authTokean !== 'undefined') ? storage.authTokean : null,
     userId: (typeof storage.userId !== 'undefined') ? storage.userId : null,
     userTitle: (typeof storage.userTitle !== 'undefined') ? storage.userTitle : null,
     userCompany: (typeof storage.userCompany !== 'undefined') ? storage.userCompany : null,

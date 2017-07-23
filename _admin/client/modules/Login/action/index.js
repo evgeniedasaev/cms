@@ -18,17 +18,15 @@ export function logon({ login, passwd }) {
 }
 
 export function logout(tokean) {
-    return dispatch => {
-        dispatch(callAction(
-            [
-                {
-                    method: AUTH_METHODS.logout,
-                    endpoint: 'auth',
-                    params: { tokean }
-                }
-            ],
-            '',
-            AUTH_LOGOUT
-        ));
-    }
+    return callAction(
+        [
+            {
+                method: AUTH_METHODS.logout,
+                endpoint: 'auth',
+                params: { tokean }
+            }
+        ],
+        '',
+        AUTH_LOGOUT
+    );
 }

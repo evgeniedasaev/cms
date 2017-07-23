@@ -13,6 +13,7 @@ import {
   StyledDimmer
 } from './style';
 import {initApp, closeSidebar, openSidebar, windowResize, dismissMessage} from '../../action';
+import {logout} from '../../../Login/action';
 
 /**
  * Основное приложение
@@ -51,12 +52,14 @@ class AppIndex extends PureComponent {
             toggleSidebar,
             isMobile,
             loading,
-            messages
+            messages,
+            authTokean,
+            logout
         } = this.props;
 
         const   sidebarProps = {
                     open: sidebarOpened,
-                    logout: () => console.log('logout'),
+                    logout: logout.bind(this, authTokean),
                     routing: [],
                     isMobile
                 },
@@ -112,11 +115,11 @@ class AppIndex extends PureComponent {
 
 function mapStateToProps (state) {
   const {sidebarOpened, isMobile, isMobileXS, isMobileSM, loading, messages} = state.app;
-  const {isLoggedIn, userTitle, userCompany, userPosition} = state.auth;
+  const {isLoggedIn, authTokean, userTitle, userCompany, userPosition} = state.auth;
   
   let userFullTitle = userTitle;
   if (userPosition) {
-      userFullTitle += "," + userPosition;
+      userFullTitle += ", " + userPosition;
   }
   if (userCompany) {
       userFullTitle += "@" + userCompany;
@@ -130,6 +133,7 @@ function mapStateToProps (state) {
     isLoggedIn,
     loading,
     messages,
+    authTokean,
     userFullTitle
   }
 }
@@ -152,6 +156,9 @@ function mapDispatchToProps (dispatch) {
     },
     dismissMessage: (messageIndex) => {
         dispatch(dismissMessage(messageIndex));
+    },
+    logout: (authTokean) => {
+        dispatch(logout(authTokean));
     }
   }
 }
