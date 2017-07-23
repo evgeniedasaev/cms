@@ -2,8 +2,9 @@ import React, { PureComponent, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { browserHistory } from 'react-router';
+import {Redirect} from 'react-router-dom';
 import * as actions from '../../action';
-import { Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react';
 import LoginForm from '../../components/Form/index';
 
 class LoginIndex extends PureComponent {
@@ -31,23 +32,29 @@ class LoginIndex extends PureComponent {
         this.props.actions.logon(this.state.user);
     }
 
-    render() {        
+    render() {
+        const {isLoggedIn} = this.props;       
         return (
             <Grid verticalAlign="middle" centered columns={1} textAlign="center" relaxed>
-                <Grid.Row>
-                    <Grid.Column tablet={10} mobile={16} computer={6}>
-                        <LoginForm
-                            onChange={this.updateFormState.bind(this)}
-                            onSubmit={this.authentificate.bind(this)} /> 
-                    </Grid.Column>
-                </Grid.Row>
+                {isLoggedIn && <Redirect to="/" />}
+                {!isLoggedIn && 
+                    <Grid.Row>
+                        <Grid.Column tablet={10} mobile={16} computer={6}>
+                            <LoginForm
+                                onChange={this.updateFormState.bind(this)}
+                                onSubmit={this.authentificate.bind(this)} /> 
+                        </Grid.Column>
+                    </Grid.Row>
+                }
             </Grid>
         );
     }
 }
 
 export default connect(
-    null,
+    state => {return {
+        isLoggedIn: state.auth.isLoggedIn
+    }},
     dispatch => {
         return { actions: bindActionCreators(actions, dispatch) }
     }
