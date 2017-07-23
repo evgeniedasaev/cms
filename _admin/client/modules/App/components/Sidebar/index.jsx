@@ -10,6 +10,7 @@ import {
   SidebarLogoutItem
 } from './style'
 import {Spacer} from '../../styles/base'
+import logo from './logo.png';
 
 export default class SidebarComponent extends Component {
   static propTypes = {
@@ -57,11 +58,10 @@ export default class SidebarComponent extends Component {
 
     return (
       <StyledSidebar {...sidebarProps}>
-        <SidebarLogoContainer href="https://github.com/Metnew/react-semantic.ui-starter">
+        <SidebarLogoContainer href="/_admin/">
           <SidebarLogo
-            src="./images/logo.png"
+            src={logo}
             alt="logo"
-            shape="circular"
             centered
           />
         </SidebarLogoContainer>
